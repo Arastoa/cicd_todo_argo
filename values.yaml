@@ -62,9 +62,7 @@ database:
   enabled: true
   replicaCount: 1
   image:
-    repository: waninoko/todo-backend
-    tag: 59f02992e7dbe7d951eb50371f8f05c0730cfd86
-    pullPolicy: IfNotPresent
+    repository: mysql:8.0
 
   service:
     type: ClusterIP
