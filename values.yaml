@@ -36,8 +36,12 @@ frontend:
   enabled: true
   replicaCount: 1
   image:
+<<<<<<< HEAD
     repository: waninoko/todo-backend
     tag: db69f0ac55ea20e45738ec4c50d3a35445e98a86
+=======
+    repository: waninoko/todo-backend:latest
+>>>>>>> 0a2721e (v1)
     pullPolicy: Always
 
   service:
