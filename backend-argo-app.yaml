@@ -1,0 +1,19 @@
+# argocd-application.yaml (ArgoCD 클러스터에 apply)
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: todo-backend
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Arastoa/cicd_todo_argo.git
+    targetRevision: main
+    path: .   # 차트가 루트에 있으면 ".", 하위 폴더면 경로 지정
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default   # 배포할 네임스페이스
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
