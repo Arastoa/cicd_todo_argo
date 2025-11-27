@@ -9,7 +9,7 @@ backend:
   enabled: true
   replicaCount: 2
   image:
-    repository: DOCKER_USERNAME/k8s-labs-todo-backend # e.g. waninoko/k8s-labs-todo-backend:latest
+    repository: waninoko/k8s-labs-todo-backend # e.g. waninoko/k8s-labs-todo-backend:latest
     tag: db69f0ac55ea20e45738ec4c50d3a35445e98a86
     pullPolicy: Always
 
