@@ -47,3 +47,17 @@ ingress:
           - path: /
             pathType: Prefix
   tls: []
+
+
+database:
+  enabled: true
+
+  service:
+    type: ClusterIP
+    port: 3306
+    targetPort: 3306
+
+  auth:
+    rootPassword: "1234"
+    database: "todolist"
+    username: "root"
