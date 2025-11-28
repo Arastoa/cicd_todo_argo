@@ -9,8 +9,8 @@ backend:
   enabled: true
   replicaCount: 2
   image:
-    repository: waninoko/k8s-labs-todo-backend # e.g. waninoko/k8s-labs-todo-backend:latest
-    tag: eca475b2e60b6ad2538f46d7a88f02896e16fc87
+    repository: DOCKER_USERNAME/k8s-labs-todo-backend # e.g. waninoko/k8s-labs-todo-backend:latest
+    tag: DOCKER_TAG
     pullPolicy: Always
 
   service:
@@ -30,86 +30,3 @@ backend:
   nodeSelector: {}
   tolerations: []
   affinity: {}
-
-# Frontend configuration
-frontend:
-  enabled: true
-  replicaCount: 1
-  image:
-    repository: waninoko/k8s-labs-todo-frontend
-    tag: latest
-    pullPolicy: Always
-
-  service:
-    type: NodePort
-    port: 3000
-    targetPort: 3000
-    nodePort:
-      enabled: true
-      port: 32000
-
-  env:
-    apiUrl: "http://192.168.49.2"
-
-  resources: {}
-
-  nodeSelector: {}
-  tolerations: []
-  affinity: {}
-
-# Database configuration
-database:
-  enabled: true
-  replicaCount: 1
-  image:
-    repository: waninoko/k8s-labs-todo-mysqldb
-    tag: latest
-
-  service:
-    type: ClusterIP
-    port: 3306
-    targetPort: 3306
-
-  auth:
-    rootPassword: "1234"
-    database: "todolist"
-    username: "root"
-
-  readinessProbe:
-    enabled: true
-    initialDelaySeconds: 10
-    periodSeconds: 10
-    timeoutSeconds: 5
-    failureThreshold: 5
-
-  persistence:
-    enabled: true
-    storageClass: "backend-cicd-prac-todo-list-mysql-storage"
-    accessMode: ReadWriteOnce
-    size: 2Gi
-    localPath: /Volumes/data/workspace/code/mzc/cdci/cicd_todo_argo/mysql #/data/mysql
-    nodeAffinity:
-      hostname: minikube
-
-  resources: {}
-
-  nodeSelector: {}
-  tolerations: []
-  affinity: {}
-
-# Ingress configuration
-ingress:
-  enabled: true
-  className: nginx
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "http://192.168.49.2:32000"
-    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
-    nginx.ingress.kubernetes.io/cors-allow-headers: "Content-Type, Authorization"
-  rules:
-    - http:
-        paths:
-          - path: /
-            pathType: Prefix
-  tls: []
