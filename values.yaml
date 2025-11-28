@@ -87,7 +87,7 @@ database:
     storageClass: "backend-cicd-prac-todo-list-mysql-storage"
     accessMode: ReadWriteOnce
     size: 2Gi
-    localPath: /data/mysql
+    localPath: /Volumes/data/workspace/code/mzc/cdci/cicd_todo_argo/mysql #/data/mysql
     nodeAffinity:
       hostname: minikube
 
