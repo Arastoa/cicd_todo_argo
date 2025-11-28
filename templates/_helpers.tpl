@@ -78,35 +78,10 @@ app.kubernetes.io/component: backend
 {{- end }}
 
 {{/*
-Frontend component name
-*/}}
-{{- define "todo-list.frontend.fullname" -}}
-{{ include "todo-list.fullname" . }}-frontend
-{{- end }}
-
-{{/*
-Frontend selector labels
-*/}}
-{{- define "todo-list.frontend.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "todo-list.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-app.kubernetes.io/component: frontend
-{{- end }}
-
-{{/*
 Database component name
 */}}
 {{- define "todo-list.database.fullname" -}}
 {{ include "todo-list.fullname" . }}-mysql
-{{- end }}
-
-{{/*
-Database selector labels
-*/}}
-{{- define "todo-list.database.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "todo-list.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-app.kubernetes.io/component: database
 {{- end }}
 
 {{/*

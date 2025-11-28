@@ -11,16 +11,7 @@ Backend Service:
 {{- end }}
 {{- end }}
 
-{{- if .Values.frontend.enabled }}
 
-Frontend Service:
-{{- if eq .Values.frontend.service.type "NodePort" }}
-  - Access via NodePort: http://<NODE-IP>:{{ .Values.frontend.service.nodePort.port }}
-{{- else }}
-  - Type: {{ .Values.frontend.service.type }}
-  - Port: {{ .Values.frontend.service.port }}
-{{- end }}
-{{- end }}
 
 {{- if .Values.ingress.enabled }}
 
@@ -31,7 +22,7 @@ Ingress:
 {{- if .Values.database.enabled }}
 
 Database:
-  - MySQL {{ .Values.database.image.tag }} running on port {{ .Values.database.service.port }}
+  - MySQL running on port {{ .Values.database.service.port }}
   - Database name: {{ .Values.database.auth.database }}
 {{- end }}
 

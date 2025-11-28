@@ -7,10 +7,10 @@ fullnameOverride: ""
 # Backend configuration
 backend:
   enabled: true
-  replicaCount: 2
+  replicaCount: 1
   image:
-    repository: waninoko/k8s-labs-todo-backend # e.g. waninoko/k8s-labs-todo-backend:latest
-    tag: 702744e1abdc9cf5aa0c55ce2e7717d4cd1d67cf
+    repository: DOCKER_USERNAME/k8s-labs-todo-backend # e.g. waninoko/k8s-labs-todo-backend:latest
+    tag: DOCKER_TAG
     pullPolicy: Always
 
   service:
