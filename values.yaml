@@ -9,7 +9,7 @@ backend:
   enabled: true
   replicaCount: 1
   image:
-    repository: waninoko/k8s-labs-todo-backend # e.g. waninoko/k8s-labs-todo-backend:latest
+    repository: waninoko/k8s-labs-todo-backend
     tag: 702744e1abdc9cf5aa0c55ce2e7717d4cd1d67cf
     pullPolicy: Always
 
@@ -22,7 +22,7 @@ backend:
       port: 32080
 
   env:
-    corsAllowedOrigins: "http://192.168.49.2:32000"
+    corsAllowedOrigins: "http://192.168.204.130:32000"
     jwtExpirationMs: "36000000"
 
   resources: {}
@@ -38,7 +38,7 @@ ingress:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "http://192.168.49.2:32000"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "http://192.168.204.130:32000"
     nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
     nginx.ingress.kubernetes.io/cors-allow-headers: "Content-Type, Authorization"
   rules:
@@ -47,7 +47,6 @@ ingress:
           - path: /
             pathType: Prefix
   tls: []
-
 
 database:
   enabled: true
